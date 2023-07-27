@@ -1,0 +1,43 @@
+[
+    {
+        "name": "So Pretty",
+        "imageName": "bag",
+        "id": 1
+    },
+    {
+        "name": "Men's Summer Shoes",
+        "imageName": "flipFlops",
+        "id": 2
+    },
+    {
+        "name": "Smart Home",
+        "imageName": "washingMachine",
+        "id": 3
+    },
+    {
+        "name": "Smart Devices",
+        "imageName": "phone",
+        "id": 4
+    },
+    {
+        "name": "ChieldLike Joy",
+        "imageName": "chieldLike",
+        "id": 5
+    },
+    {
+        "name": "A New WordRobe",
+        "imageName": "wordRobe",
+        "id": 6
+    },
+    {
+        "name": "Must Haves",
+        "imageName": "dustpan",
+        "id": 7
+    },
+    {
+        "name": "In Perfect Order",
+        "imageName": "borer",
+        "id": 8
+    }
+]
+

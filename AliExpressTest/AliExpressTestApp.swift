@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct AliExpressTestApp: App {
+    @StateObject private var categoryModelData = CategoryData()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(categoryModelData)
         }
     }
 }

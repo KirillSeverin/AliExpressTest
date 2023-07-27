@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED726ACB2A714E5B00786511 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED726ACA2A714E5B00786511 /* CategoryDetail.swift */; };
+		ED85FD382A700B89005AAD50 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED85FD372A700B89005AAD50 /* CategoryList.swift */; };
+		ED85FD3A2A700D4D005AAD50 /* categoryData.json in Resources */ = {isa = PBXBuildFile; fileRef = ED85FD392A700D4D005AAD50 /* categoryData.json */; };
 		EDC062F92A6FF0D7006D19DC /* AliExpressTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC062F82A6FF0D7006D19DC /* AliExpressTestApp.swift */; };
 		EDC062FB2A6FF0D7006D19DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC062FA2A6FF0D7006D19DC /* ContentView.swift */; };
 		EDC062FD2A6FF0DA006D19DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDC062FC2A6FF0DA006D19DC /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 		EDC0630A2A6FF0DA006D19DC /* AliExpressTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC063092A6FF0DA006D19DC /* AliExpressTestTests.swift */; };
 		EDC063142A6FF0DA006D19DC /* AliExpressTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC063132A6FF0DA006D19DC /* AliExpressTestUITests.swift */; };
 		EDC063162A6FF0DA006D19DC /* AliExpressTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC063152A6FF0DA006D19DC /* AliExpressTestUITestsLaunchTests.swift */; };
+		EDC063262A6FF6CF006D19DC /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC063252A6FF6CF006D19DC /* CategoryCell.swift */; };
+		EDC0632B2A700375006D19DC /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC0632A2A700375006D19DC /* CategoryData.swift */; };
+		EDC0632D2A700389006D19DC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC0632C2A700389006D19DC /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED726ACA2A714E5B00786511 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
+		ED85FD372A700B89005AAD50 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
+		ED85FD392A700D4D005AAD50 /* categoryData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categoryData.json; sourceTree = "<group>"; };
 		EDC062F52A6FF0D7006D19DC /* AliExpressTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AliExpressTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC062F82A6FF0D7006D19DC /* AliExpressTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliExpressTestApp.swift; sourceTree = "<group>"; };
 		EDC062FA2A6FF0D7006D19DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +53,9 @@
 		EDC0630F2A6FF0DA006D19DC /* AliExpressTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AliExpressTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC063132A6FF0DA006D19DC /* AliExpressTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliExpressTestUITests.swift; sourceTree = "<group>"; };
 		EDC063152A6FF0DA006D19DC /* AliExpressTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliExpressTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EDC063252A6FF6CF006D19DC /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		EDC0632A2A700375006D19DC /* CategoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryData.swift; sourceTree = "<group>"; };
+		EDC0632C2A700389006D19DC /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				EDC062F82A6FF0D7006D19DC /* AliExpressTestApp.swift */,
-				EDC062FA2A6FF0D7006D19DC /* ContentView.swift */,
+				EDC063292A700352006D19DC /* Model */,
+				EDC0632E2A700664006D19DC /* Views */,
+				EDC063272A6FF874006D19DC /* Resources */,
 				EDC062FC2A6FF0DA006D19DC /* Assets.xcassets */,
 				EDC062FE2A6FF0DA006D19DC /* Preview Content */,
 			);
@@ -125,6 +139,42 @@
 				EDC063152A6FF0DA006D19DC /* AliExpressTestUITestsLaunchTests.swift */,
 			);
 			path = AliExpressTestUITests;
+			sourceTree = "<group>";
+		};
+		EDC063272A6FF874006D19DC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ED85FD392A700D4D005AAD50 /* categoryData.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EDC063292A700352006D19DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EDC0632C2A700389006D19DC /* Category.swift */,
+				EDC0632A2A700375006D19DC /* CategoryData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EDC0632E2A700664006D19DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EDC062FA2A6FF0D7006D19DC /* ContentView.swift */,
+				EDC0632F2A700692006D19DC /* Categories */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EDC0632F2A700692006D19DC /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				EDC063252A6FF6CF006D19DC /* CategoryCell.swift */,
+				ED85FD372A700B89005AAD50 /* CategoryList.swift */,
+				ED726ACA2A714E5B00786511 /* CategoryDetail.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +283,7 @@
 			files = (
 				EDC063002A6FF0DA006D19DC /* Preview Assets.xcassets in Resources */,
 				EDC062FD2A6FF0DA006D19DC /* Assets.xcassets in Resources */,
+				ED85FD3A2A700D4D005AAD50 /* categoryData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +309,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDC062FB2A6FF0D7006D19DC /* ContentView.swift in Sources */,
+				EDC063262A6FF6CF006D19DC /* CategoryCell.swift in Sources */,
+				EDC0632D2A700389006D19DC /* Category.swift in Sources */,
+				ED726ACB2A714E5B00786511 /* CategoryDetail.swift in Sources */,
 				EDC062F92A6FF0D7006D19DC /* AliExpressTestApp.swift in Sources */,
+				EDC0632B2A700375006D19DC /* CategoryData.swift in Sources */,
+				ED85FD382A700B89005AAD50 /* CategoryList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
