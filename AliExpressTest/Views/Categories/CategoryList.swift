@@ -13,7 +13,11 @@ struct CategoryList: View {
     @Environment(\.openWindow) private var openWindow
     @EnvironmentObject private var windowIDs: ConstantsModel.WindowsIDs
     @State private var isDetailPresented = false
+    @State private var isAnimationVisible = false
     @State private var tappedCellFrame: CGRect = .zero
+    @State private var isAnimationInteractionDisabled = false
+    
+    private let animationDuration: CGFloat = 0.5
     
     private var categories: [Category] {
         categoryData.categories
@@ -35,14 +39,13 @@ struct CategoryList: View {
                                     )
                                     .onTapGesture {
                                         tappedCellFrame = cellGeometryProxy.frame(in: .global)
+                                        isAnimationVisible = true
                                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                                             isDetailPresented.toggle()
                                         }
-                                        print("Cell Tap")
+                                        print("Tap")
                                     }
-                                    //                                 {
-                                    //                            openWindow(id: windowIDs.categoryDetailID)
-                                    //                        })
+//                                    openWindow(id: windowIDs.categoryDelailID)
                                 }
                                 .frame(width: cellSize.width)
                             }
@@ -54,6 +57,7 @@ struct CategoryList: View {
                 
                 ScaleFullscreenAnimation(
                     isPresented: $isDetailPresented,
+                    isVisible: $isAnimationVisible,
                     sourceImage: Image("bag"),// TODO: Images
                     destinationImage: Image("phone"),
                     sourceFrame: $tappedCellFrame,
@@ -61,12 +65,27 @@ struct CategoryList: View {
                         x: 0,
                         y: geometryProxy.safeAreaInsets.top,
                         width: geometryProxy.size.width,
-                        height: geometryProxy.size.height + (geometryProxy.safeAreaInsets.top + geometryProxy.safeAreaInsets.bottom)
-                    )
+                        height: geometryProxy.size.height
+                    ),
+                    animation: .linear(duration: animationDuration)
                 )
+                .disabled(isAnimationInteractionDisabled)
+                .opacity(isAnimationVisible ? 1 : 0)
+            }
+            .onChange(of: isDetailPresented) { newValue in
+                isAnimationInteractionDisabled = true
+                if newValue {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 0.1) {
+                        isAnimationInteractionDisabled = false
+                    }
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration + 0.1) {
+                        isAnimationVisible = false
+                        isAnimationInteractionDisabled = false
+                    }
+                }
             }
         }
-        
     }
 }
 

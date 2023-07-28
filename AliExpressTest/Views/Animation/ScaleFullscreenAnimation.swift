@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScaleFullscreenAnimation: View {
     @Binding var isPresented: Bool
+    @Binding var isVisible: Bool
     var sourceImage: Image
     var destinationImage: Image
     @Binding var sourceFrame: CGRect
@@ -18,21 +19,29 @@ struct ScaleFullscreenAnimation: View {
     var body: some View {
         GeometryReader { geometryProxy in
             ZStack {
-                    Color.black
+                Color.black
                     .opacity(isPresented ? 0.8 : 0.5)
                     .ignoresSafeArea()
-                }
-                .animation(animation, value: isPresented)
-                .offset(
-                    x: isPresented ? 0 : sourceFrame.origin.x,
-                    y: isPresented ? 0 : sourceFrame.origin.y - geometryProxy.safeAreaInsets.top
-                )
-                .frame(
-                    width: isPresented ? destinationFrame.width : sourceFrame.width,
-                    height: isPresented ? destinationFrame.height : sourceFrame.height
-                )
-                .onTapGesture {
-                    isPresented.toggle()
+                
+                sourceImage
+                    .resizable()
+                    .opacity(isPresented ? 0 : 1)
+                
+                destinationImage
+                    .resizable()
+                    .opacity(isPresented ? 1 : 0)
+            }
+            .animation(animation, value: isPresented)
+            .offset(
+                x: isPresented ? 0 : sourceFrame.origin.x,
+                y: isPresented ? 0 : sourceFrame.origin.y - geometryProxy.safeAreaInsets.top
+            )
+            .frame(
+                width: isPresented ? destinationFrame.width : sourceFrame.width,
+                height: isPresented ? destinationFrame.height : sourceFrame.height
+            )
+            .onTapGesture {
+                isPresented.toggle()
             }
         }
     }
@@ -43,6 +52,7 @@ struct CategoryDetailAnimation_Previews: PreviewProvider {
         Group {
             ScaleFullscreenAnimation(
                 isPresented: .constant(true),
+                isVisible: .constant(true),
                 sourceImage: Image("bag"),
                 destinationImage: Image("phone"),
                 sourceFrame: .constant(
@@ -59,6 +69,7 @@ struct CategoryDetailAnimation_Previews: PreviewProvider {
             
             ScaleFullscreenAnimation(
                 isPresented: .constant(false),
+                isVisible: .constant(false),
                 sourceImage: Image("bag"),
                 destinationImage: Image("phone"),
                 sourceFrame: .constant(
