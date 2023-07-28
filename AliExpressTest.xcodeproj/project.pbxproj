@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED726ACB2A714E5B00786511 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED726ACA2A714E5B00786511 /* CategoryDetail.swift */; };
+		ED726ACE2A72987600786511 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED726ACD2A72987600786511 /* Constants.swift */; };
 		ED85FD382A700B89005AAD50 /* CategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED85FD372A700B89005AAD50 /* CategoryList.swift */; };
 		ED85FD3A2A700D4D005AAD50 /* categoryData.json in Resources */ = {isa = PBXBuildFile; fileRef = ED85FD392A700D4D005AAD50 /* categoryData.json */; };
 		EDC062F92A6FF0D7006D19DC /* AliExpressTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC062F82A6FF0D7006D19DC /* AliExpressTestApp.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		ED726ACA2A714E5B00786511 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
+		ED726ACD2A72987600786511 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		ED85FD372A700B89005AAD50 /* CategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryList.swift; sourceTree = "<group>"; };
 		ED85FD392A700D4D005AAD50 /* categoryData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categoryData.json; sourceTree = "<group>"; };
 		EDC062F52A6FF0D7006D19DC /* AliExpressTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AliExpressTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED726ACC2A72986800786511 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				EDC062F82A6FF0D7006D19DC /* AliExpressTestApp.swift */,
+				ED726ACD2A72987600786511 /* Constants.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		EDC062EC2A6FF0D7006D19DC = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +117,7 @@
 		EDC062F72A6FF0D7006D19DC /* AliExpressTest */ = {
 			isa = PBXGroup;
 			children = (
-				EDC062F82A6FF0D7006D19DC /* AliExpressTestApp.swift */,
+				ED726ACC2A72986800786511 /* App */,
 				EDC063292A700352006D19DC /* Model */,
 				EDC0632E2A700664006D19DC /* Views */,
 				EDC063272A6FF874006D19DC /* Resources */,
@@ -311,6 +322,7 @@
 				EDC062FB2A6FF0D7006D19DC /* ContentView.swift in Sources */,
 				EDC063262A6FF6CF006D19DC /* CategoryCell.swift in Sources */,
 				EDC0632D2A700389006D19DC /* Category.swift in Sources */,
+				ED726ACE2A72987600786511 /* Constants.swift in Sources */,
 				ED726ACB2A714E5B00786511 /* CategoryDetail.swift in Sources */,
 				EDC062F92A6FF0D7006D19DC /* AliExpressTestApp.swift in Sources */,
 				EDC0632B2A700375006D19DC /* CategoryData.swift in Sources */,
