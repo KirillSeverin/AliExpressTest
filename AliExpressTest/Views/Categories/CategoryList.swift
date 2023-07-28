@@ -34,14 +34,14 @@ struct CategoryList: View {
                                 isDetailPresented.toggle()
                                 print(geometryProxy.size, geometryProxy.frame(in: .local), geometryProxy.frame(in: .global), separator: "\n")
                             }
-//                            .overlay(
-//                                ScaleFullscreenAnimation(
-//                                    isPresented: $isDetailPresented,
-//                                    sourceImage: Image("bag"),// TODO: Images
-//                                    destinationImage: Image("phone"),
-//                                    sourceFrame: .zero
-//                                )
-//                            )
+                            .overlay(
+                                ScaleFullscreenAnimation(
+                                    isPresented: $isDetailPresented,
+                                    sourceImage: Image("bag"),// TODO: Images
+                                    destinationImage: Image("phone"),
+                                    sourceFrame: geometryProxy.frame(in: .global)
+                                )
+                            )
     //                                 {
     //                            openWindow(id: windowIDs.categoryDetailID)
     //                        })
