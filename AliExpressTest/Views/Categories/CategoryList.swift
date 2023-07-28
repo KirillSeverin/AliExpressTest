@@ -13,51 +13,57 @@ struct CategoryList: View {
     @Environment(\.openWindow) private var openWindow
     @EnvironmentObject private var windowIDs: ConstantsModel.WindowsIDs
     @State private var isDetailPresented = false
+    @State private var tappedCellFrame: CGRect = .zero
     
     private var categories: [Category] {
         categoryData.categories
     }
     
-    private let cellWidth: CGFloat = 130
+    private let cellSize = CGSize(width: 130, height: 150)
     
     var body: some View {
         GeometryReader { geometryProxy in
-            NavigationView {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack() {
-                        ForEach(categories, id: \.self) { category in
-                            GeometryReader { cellGeometryProxy in
-                                CategoryCell(
-                                    category: category,
-                                    width: cellWidth
-                                )
-                                .onTapGesture {
-                                    isDetailPresented.toggle()
-                                    print(cellGeometryProxy.size, cellGeometryProxy.frame(in: .local), cellGeometryProxy.frame(in: .global), geometryProxy.size, geometryProxy.safeAreaInsets, separator: "\n")
-                                }
-                                .overlay(
-                                    ScaleFullscreenAnimation(
-                                        isPresented: $isDetailPresented,
-                                        sourceImage: Image("bag"),// TODO: Images
-                                        destinationImage: Image("phone"),
-                                        sourceFrame: cellGeometryProxy.frame(in: .global),
-                                        destinationFrame: CGRect(
-                                            x: 0,
-                                            y: geometryProxy.safeAreaInsets.top,
-                                            width: geometryProxy.size.width,
-                                            height: geometryProxy.size.height - (geometryProxy.safeAreaInsets.top + geometryProxy.safeAreaInsets.bottom)
-                                        )
+            ZStack {
+                NavigationView {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack() {
+                            ForEach(categories, id: \.self) { category in
+                                GeometryReader { cellGeometryProxy in
+                                    CategoryCell(
+                                        category: category,
+                                        size: cellSize
                                     )
-                                )
-        //                                 {
-        //                            openWindow(id: windowIDs.categoryDetailID)
-        //                        })
+                                    .onTapGesture {
+                                        tappedCellFrame = cellGeometryProxy.frame(in: .global)
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                            isDetailPresented.toggle()
+                                        }
+                                        print("Cell Tap")
+                                    }
+                                    //                                 {
+                                    //                            openWindow(id: windowIDs.categoryDetailID)
+                                    //                        })
+                                }
+                                .frame(width: cellSize.width)
                             }
-                            .frame(width: cellWidth)
                         }
+                        .padding(.horizontal,20)
                     }
-                    .padding(.horizontal,20)
+                    .frame(height: cellSize.height)
                 }
+                
+                ScaleFullscreenAnimation(
+                    isPresented: $isDetailPresented,
+                    sourceImage: Image("bag"),// TODO: Images
+                    destinationImage: Image("phone"),
+                    sourceFrame: $tappedCellFrame,
+                    destinationFrame: CGRect(
+                        x: 0,
+                        y: geometryProxy.safeAreaInsets.top,
+                        width: geometryProxy.size.width,
+                        height: geometryProxy.size.height + (geometryProxy.safeAreaInsets.top + geometryProxy.safeAreaInsets.bottom)
+                    )
+                )
             }
         }
         

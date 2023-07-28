@@ -10,14 +10,13 @@ import SwiftUI
 struct CategoryCell: View {
     var category: Category
     
-    var width: CGFloat = 130
-    var height: CGFloat = 150
+    var size: CGSize = CGSize(width: 130, height: 150)
     
     var body: some View {
         category.image
             .resizable()
-            .frame(width: width, height: height)
-            .offset(x: width/4, y: height/3)
+            .frame(width: size.width, height: size.height)
+            .offset(x: size.width/4, y: size.height/3)
             .clipped()
             .overlay(
                 Text(category.name)

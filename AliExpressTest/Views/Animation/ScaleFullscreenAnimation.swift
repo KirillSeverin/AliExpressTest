@@ -11,7 +11,7 @@ struct ScaleFullscreenAnimation: View {
     @Binding var isPresented: Bool
     var sourceImage: Image
     var destinationImage: Image
-    var sourceFrame: CGRect
+    @Binding var sourceFrame: CGRect
     var destinationFrame: CGRect
     var animation: Animation = .default
     
@@ -20,6 +20,7 @@ struct ScaleFullscreenAnimation: View {
             ZStack {
                     Color.black
                     .opacity(isPresented ? 0.8 : 0.5)
+                    .ignoresSafeArea()
                 }
                 .animation(animation, value: isPresented)
                 .offset(
@@ -31,7 +32,6 @@ struct ScaleFullscreenAnimation: View {
                     height: isPresented ? destinationFrame.height : sourceFrame.height
                 )
                 .onTapGesture {
-                    print(sourceFrame.minX, destinationFrame)
                     isPresented.toggle()
             }
         }
@@ -45,7 +45,9 @@ struct CategoryDetailAnimation_Previews: PreviewProvider {
                 isPresented: .constant(true),
                 sourceImage: Image("bag"),
                 destinationImage: Image("phone"),
-                sourceFrame: CGRect(x: 20.0, y: 59.0, width: 130.0, height: 759.0),
+                sourceFrame: .constant(
+                    CGRect(x: 20.0, y: 59.0, width: 130.0, height: 759.0)
+                ),
                 destinationFrame: CGRect(
                     x: 0,
                     y: 59,
@@ -59,7 +61,9 @@ struct CategoryDetailAnimation_Previews: PreviewProvider {
                 isPresented: .constant(false),
                 sourceImage: Image("bag"),
                 destinationImage: Image("phone"),
-                sourceFrame: CGRect(x: 20.0, y: 59.0, width: 130.0, height: 759.0),
+                sourceFrame: .constant(
+                    CGRect(x: 20.0, y: 59.0, width: 130.0, height: 759.0)
+                ),
                 destinationFrame: CGRect(
                     x: 0,
                     y: 59,
