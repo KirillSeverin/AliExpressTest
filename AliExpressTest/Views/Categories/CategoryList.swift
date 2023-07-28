@@ -21,35 +21,43 @@ struct CategoryList: View {
     private let cellWidth: CGFloat = 130
     
     var body: some View {
-        NavigationView {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack {
-                    ForEach(categories, id: \.self) { category in
-                        GeometryReader { geometryProxy in
-                            CategoryCell(
-                                category: category,
-                                width: cellWidth
-                            )
-                            .onTapGesture {
-                                isDetailPresented.toggle()
-                                print(geometryProxy.size, geometryProxy.frame(in: .local), geometryProxy.frame(in: .global), separator: "\n")
-                            }
-                            .overlay(
-                                ScaleFullscreenAnimation(
-                                    isPresented: $isDetailPresented,
-                                    sourceImage: Image("bag"),// TODO: Images
-                                    destinationImage: Image("phone"),
-                                    sourceFrame: geometryProxy.frame(in: .global)
+        GeometryReader { geometryProxy in
+            NavigationView {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack() {
+                        ForEach(categories, id: \.self) { category in
+                            GeometryReader { cellGeometryProxy in
+                                CategoryCell(
+                                    category: category,
+                                    width: cellWidth
                                 )
-                            )
-    //                                 {
-    //                            openWindow(id: windowIDs.categoryDetailID)
-    //                        })
+                                .onTapGesture {
+                                    isDetailPresented.toggle()
+                                    print(cellGeometryProxy.size, cellGeometryProxy.frame(in: .local), cellGeometryProxy.frame(in: .global), geometryProxy.size, geometryProxy.safeAreaInsets, separator: "\n")
+                                }
+                                .overlay(
+                                    ScaleFullscreenAnimation(
+                                        isPresented: $isDetailPresented,
+                                        sourceImage: Image("bag"),// TODO: Images
+                                        destinationImage: Image("phone"),
+                                        sourceFrame: cellGeometryProxy.frame(in: .global),
+                                        destinationFrame: CGRect(
+                                            x: 0,
+                                            y: geometryProxy.safeAreaInsets.top,
+                                            width: geometryProxy.size.width,
+                                            height: geometryProxy.size.height - (geometryProxy.safeAreaInsets.top + geometryProxy.safeAreaInsets.bottom)
+                                        )
+                                    )
+                                )
+        //                                 {
+        //                            openWindow(id: windowIDs.categoryDetailID)
+        //                        })
+                            }
+                            .frame(width: cellWidth)
                         }
-                        .frame(width: cellWidth)
                     }
+                    .padding(.horizontal,20)
                 }
-                .padding(.horizontal,20)
             }
         }
         
