@@ -33,6 +33,8 @@ struct CategoryList: View {
                         HStack() {
                             ForEach(categories, id: \.self) { category in
                                 GeometryReader { cellGeometryProxy in
+                                    //ImageRenderer?
+                                    //Сверстать полноэкранное
                                     CategoryCell(
                                         category: category,
                                         size: cellSize
@@ -55,7 +57,7 @@ struct CategoryList: View {
                     .frame(height: cellSize.height)
                 }
                 
-                ScaleFullscreenAnimation(
+                ScaleFullScreenAnimation(
                     isPresented: $isDetailPresented,
                     isVisible: $isAnimationVisible,
                     sourceImage: Image("bag"),// TODO: Images
@@ -87,6 +89,10 @@ struct CategoryList: View {
             }
         }
     }
+    
+//    func destinationAnimationImage() -> some View {
+////        Renderer (CategoryDetail)
+//    }
 }
 
 struct CategoryList_Previews: PreviewProvider {

@@ -10,6 +10,7 @@ import SwiftUI
 struct Category: Hashable, Codable, Identifiable {
     var id: Int
     var name: String
+    //var displayModule - color 
     
     private var imageName: String
     var image: Image {

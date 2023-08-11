@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct CategoryDetail: View {
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Hey")
+        }
     }
 }
 
 struct CategoryDetail_Previews: PreviewProvider {
+    static var categoriesData = CategoryData()
+    
     static var previews: some View {
         CategoryDetail()
+            .environmentObject(categoriesData)
     }
 }
